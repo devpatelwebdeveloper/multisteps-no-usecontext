@@ -58,6 +58,25 @@ function Quiz() {
       }
     ]
   };
+  const Que3 = {
+    stateSet: "question3",
+    question: "Question 3",
+    subquestion: "Sub Question3",
+    options: [
+      {
+        value: "yes",
+        title: "YES"
+      },
+      {
+        value: "no",
+        title: "NO"
+      },
+      {
+        value: "na",
+        title: "N/A"
+      }
+    ]
+  };
 
   //Question Ends
 
@@ -97,7 +116,7 @@ function Quiz() {
   }, [state.inputAdded]);
 
   //After Completion Show this
-  if (mode === 3) {
+  if (mode === 4) {
     return <>{JSON.stringify(state)}</>;
   }
 
@@ -127,6 +146,16 @@ function Quiz() {
       {mode === 2 && (
         <QuizQuestion
           question={Que2}
+          state={state}
+          setState={setState}
+          setInputValue={setInputValue}
+          prevPage={prevPage}
+          nextPage={nextPage}
+        />
+      )}
+      {mode === 3 && (
+        <QuizQuestion
+          question={Que3}
           state={state}
           setState={setState}
           setInputValue={setInputValue}

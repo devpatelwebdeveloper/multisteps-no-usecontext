@@ -15,19 +15,18 @@ function QuizQuestion({
       <h3>{question.subquestion}</h3>
       {question.options.map((opt) => {
         return (
-          <>
-            <div
-              key={opt.value}
-              className={`option ${state.question1 === opt.value && `active`}`}
-              onClick={(event) => {
-                console.log(opt.value);
-                setInputValue(question.stateSet, opt.value, setState);
-                nextPage(event);
-              }}
-            >
-              <p>{opt.title}</p>
-            </div>
-          </>
+          <div
+            key={opt.value}
+            className={`option ${
+              state[question.stateSet] === opt.value && `active`
+            }`}
+            onClick={(event) => {
+              setInputValue(question.stateSet, opt.value, setState);
+              nextPage(event);
+            }}
+          >
+            <p>{opt.title}</p>
+          </div>
         );
       })}
       {prevPage && (
