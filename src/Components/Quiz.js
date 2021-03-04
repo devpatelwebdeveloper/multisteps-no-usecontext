@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import QuizQuestion from "./Questions/QuizQuestion";
-
+import Welcome from "./WelcomeScreen";
+import DisplayAnswer from "./CompletedScreen";
 import setInputValue from "./utils/SetInputValue";
 import useVisualMode from "./utils/UseVisualMode";
 
@@ -13,10 +14,10 @@ function Quiz() {
     question5: "",
     question6: "",
     question7: "",
-
     inputAdded: false
   });
   const { mode, transition } = useVisualMode(0);
+  const [recommendation, setRecommendation] = useState("easystart");
 
   //Questions Start
   const Ques = [
@@ -171,6 +172,30 @@ function Quiz() {
     transition(mode - 1);
   };
 
+  //Check the answer and add recomendation
+  const showAnswer = () => {
+    if (state.question7 === "yes") {
+      setRecommendation("plus");
+    } else {
+      if (state.question5 === "yes" || state.question6 === "yes") {
+        setRecommendation("essentials");
+      } else {
+        setRecommendation("easystart");
+      }
+    }
+    if (
+      state.question1 === "no" &&
+      state.question2 === "no" &&
+      state.question3 === "no" &&
+      state.question4 === "no" &&
+      state.question5 === "no" &&
+      state.question6 === "no" &&
+      state.question7 === "no"
+    ) {
+      setRecommendation("selfemployed");
+    }
+  };
+
   //Use Effect to check if added
   useEffect(() => {
     if (state.inputAdded === true) {
@@ -180,7 +205,8 @@ function Quiz() {
         inputAdded: false
       }));
 
-      if (mode === 8) {
+      if (mode === Ques.length) {
+        showAnswer();
         console.log("STATE...", state);
       }
     } else {
@@ -196,18 +222,42 @@ function Quiz() {
     //Start
     if (i === 0) {
       return (
-        <button
-          onClick={() => {
-            transition(mode + 1);
-          }}
-        >
-          Start Quiz
-        </button>
+        <>
+          <Welcome />
+          <button
+            onClick={() => {
+              transition(mode + 1);
+            }}
+          >
+            Start Quiz
+          </button>
+        </>
       );
     }
     //After Completion Show this
     else if (i === Ques.length + 1) {
-      return <>{JSON.stringify(state)}</>;
+      return (
+        <>
+          <DisplayAnswer recommendation={recommendation} />
+          <button
+            onClick={() => {
+              transition(mode - Ques.length);
+              setState({
+                question1: "",
+                question2: "",
+                question3: "",
+                question4: "",
+                question5: "",
+                question6: "",
+                question7: "",
+                inputAdded: false
+              });
+            }}
+          >
+            Start Again
+          </button>
+        </>
+      );
     }
     //Quiz Steps
     return (
