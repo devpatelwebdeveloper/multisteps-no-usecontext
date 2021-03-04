@@ -1,4 +1,5 @@
 import Quiz from "./Components/Quiz";
+// import Quiz from "./Components/QuizSep";
 import "./styles.css";
 
 export default function App() {

@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import QuizQuestion from "./Questions/QuizQuestion";
-import QuizOne from "./Questions/QuizOne";
-import QuizTwo from "./Questions/QuizTwo";
+
 import setInputValue from "./utils/SetInputValue";
 import useVisualMode from "./utils/UseVisualMode";
 
@@ -20,63 +19,141 @@ function Quiz() {
   const { mode, transition } = useVisualMode(0);
 
   //Questions Start
-  const Que = {
-    stateSet: "question1",
-    question: "Question 1",
-    subquestion: "Sub Question1",
-    options: [
-      {
-        value: "yes",
-        title: "YES"
-      },
-      {
-        value: "no",
-        title: "NO"
-      },
-      {
-        value: "na",
-        title: "N/A"
-      }
-    ]
-  };
-  const Que2 = {
-    stateSet: "question2",
-    question: "Question 2",
-    subquestion: "Sub Question2",
-    options: [
-      {
-        value: "yes",
-        title: "YES"
-      },
-      {
-        value: "no",
-        title: "NO"
-      },
-      {
-        value: "na",
-        title: "N/A"
-      }
-    ]
-  };
-  const Que3 = {
-    stateSet: "question3",
-    question: "Question 3",
-    subquestion: "Sub Question3",
-    options: [
-      {
-        value: "yes",
-        title: "YES"
-      },
-      {
-        value: "no",
-        title: "NO"
-      },
-      {
-        value: "na",
-        title: "N/A"
-      }
-    ]
-  };
+  const Ques = [
+    {
+      stateSet: "question1",
+      question: "Question 1",
+      subquestion: "Sub Question1",
+      options: [
+        {
+          value: "yes",
+          title: "YES"
+        },
+        {
+          value: "no",
+          title: "NO"
+        },
+        {
+          value: "na",
+          title: "N/A"
+        }
+      ]
+    },
+    {
+      stateSet: "question2",
+      question: "Question 2",
+      subquestion: "Sub Question2",
+      options: [
+        {
+          value: "yes",
+          title: "YES"
+        },
+        {
+          value: "no",
+          title: "NO"
+        },
+        {
+          value: "na",
+          title: "N/A"
+        }
+      ]
+    },
+    {
+      stateSet: "question3",
+      question: "Question 3",
+      subquestion: "Sub Question3",
+      options: [
+        {
+          value: "yes",
+          title: "YES"
+        },
+        {
+          value: "no",
+          title: "NO"
+        },
+        {
+          value: "na",
+          title: "N/A"
+        }
+      ]
+    },
+    {
+      stateSet: "question4",
+      question: "Question 4",
+      subquestion: "Sub Question4",
+      options: [
+        {
+          value: "yes",
+          title: "YES"
+        },
+        {
+          value: "no",
+          title: "NO"
+        },
+        {
+          value: "na",
+          title: "N/A"
+        }
+      ]
+    },
+    {
+      stateSet: "question5",
+      question: "Question 5",
+      subquestion: "Sub Question5",
+      options: [
+        {
+          value: "yes",
+          title: "YES"
+        },
+        {
+          value: "no",
+          title: "NO"
+        },
+        {
+          value: "na",
+          title: "N/A"
+        }
+      ]
+    },
+    {
+      stateSet: "question6",
+      question: "Question 6",
+      subquestion: "Sub Question6",
+      options: [
+        {
+          value: "yes",
+          title: "YES"
+        },
+        {
+          value: "no",
+          title: "NO"
+        },
+        {
+          value: "na",
+          title: "N/A"
+        }
+      ]
+    },
+    {
+      stateSet: "question7",
+      question: "Question 7",
+      subquestion: "Sub Question7",
+      options: [
+        {
+          value: "yes",
+          title: "YES"
+        },
+        {
+          value: "no",
+          title: "NO"
+        },
+        {
+          value: "na",
+          title: "N/A"
+        }
+      ]
+    }
+  ];
 
   //Question Ends
 
@@ -115,17 +192,10 @@ function Quiz() {
     }
   }, [state.inputAdded]);
 
-  //After Completion Show this
-  if (mode === 4) {
-    return <>{JSON.stringify(state)}</>;
-  }
-
-  //Show Quiz
-  return (
-    <>
-      <h2>Main Quiz</h2>
-
-      {mode === 0 && (
+  for (let i = mode; i <= Ques.length + 1; i++) {
+    //Start
+    if (i === 0) {
+      return (
         <button
           onClick={() => {
             transition(mode + 1);
@@ -133,56 +203,28 @@ function Quiz() {
         >
           Start Quiz
         </button>
-      )}
-      {mode === 1 && (
-        <QuizQuestion
-          question={Que}
-          state={state}
-          setState={setState}
-          setInputValue={setInputValue}
-          nextPage={nextPage}
-        />
-      )}
-      {mode === 2 && (
-        <QuizQuestion
-          question={Que2}
-          state={state}
-          setState={setState}
-          setInputValue={setInputValue}
-          prevPage={prevPage}
-          nextPage={nextPage}
-        />
-      )}
-      {mode === 3 && (
-        <QuizQuestion
-          question={Que3}
-          state={state}
-          setState={setState}
-          setInputValue={setInputValue}
-          prevPage={prevPage}
-          nextPage={nextPage}
-        />
-      )}
-
-      {/* {mode === 1 && (
-        <QuizOne
-          nextPage={nextPage}
-          state={state}
-          setState={setState}
-          setInputValue={setInputValue}
-        />
-      )}
-      {mode === 2 && (
-        <QuizTwo
-          state={state}
-          setState={setState}
-          setInputValue={setInputValue}
-          prevPage={prevPage}
-          nextPage={nextPage}
-        />
-      )}*/}
-    </>
-  );
+      );
+    }
+    //After Completion Show this
+    else if (i === Ques.length + 1) {
+      return <>{JSON.stringify(state)}</>;
+    }
+    //Quiz Steps
+    return (
+      <>
+        {mode === i && (
+          <QuizQuestion
+            question={Ques[i - 1]}
+            state={state}
+            setState={setState}
+            setInputValue={setInputValue}
+            prevPage={i > 1 && prevPage}
+            nextPage={nextPage}
+          />
+        )}
+      </>
+    );
+  }
 }
 
 export default Quiz;
