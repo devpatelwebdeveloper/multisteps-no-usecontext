@@ -8,5 +8,6 @@ afterEach(cleanup);
 describe("Quiz", () => {
   test("renders correctly", () => {
     const { asFragment } = render(<Quiz />);
+    expect(1 + 1).toBe(2);
   });
 });
