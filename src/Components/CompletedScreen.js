@@ -39,7 +39,7 @@ export default function DisplayAnswer({ recommendation }) {
   return (
     <>
       <h1>Display Answer here</h1>
-      <h2>Your Recommended feature is {productTitle}</h2>
+      <h2 data-testid="answer">Your Recommended feature is {productTitle}</h2>
     </>
   );
 }

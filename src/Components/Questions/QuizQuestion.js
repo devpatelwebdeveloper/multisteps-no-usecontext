@@ -10,12 +10,13 @@ function QuizQuestion({
   setState
 }) {
   return (
-    <>
+    <div data-testid={`quiz-question-${question.question.replace(/\s/g, "")}`}>
       <h2>{question.question}</h2>
       <h3>{question.subquestion}</h3>
       {question.options.map((opt) => {
         return (
           <div
+            data-testid={`${question.question.replace(/\s/g, "")}-${opt.value}`}
             key={opt.value}
             className={`option ${
               state[question.stateSet] === opt.value && `active`
@@ -32,7 +33,7 @@ function QuizQuestion({
       {prevPage && (
         <button onClick={(event) => prevPage(event)}>Previous</button>
       )}
-    </>
+    </div>
   );
 }
 

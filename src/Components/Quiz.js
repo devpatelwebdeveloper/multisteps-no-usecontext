@@ -225,6 +225,7 @@ function Quiz() {
         <>
           <Welcome />
           <button
+            data-testid="welcomebutton"
             onClick={() => {
               transition(mode + 1);
             }}
