@@ -1,14 +1,23 @@
-import React, { useState } from "react";
+import React from "react";
 import { render, cleanup, fireEvent } from "@testing-library/react";
-import { renderHook, act } from "@testing-library/react-hooks";
+// import { renderHook, act } from "@testing-library/react-hooks";
 import "@testing-library/jest-dom/extend-expect";
 import Quiz from "./Quiz";
 
 afterEach(cleanup);
 
+const Data = {
+  easyStartUrl: "https://quickbooks.intuit.com/gutenberg/ca/pricing-easystart/",
+  plusUrl: "https://quickbooks.intuit.com/gutenberg/ca/pricing-plus/",
+  essentialsUrl:
+    "https://quickbooks.intuit.com/gutenberg/ca/pricing-essentials/",
+  selfemployedUrl:
+    "https://quickbooks.intuit.com/gutenberg/ca/pricing-self-employed/"
+};
+
 describe("Quiz", () => {
   test("renders correctly", () => {
-    const { getByTestId } = render(<Quiz />);
+    const { getByTestId } = render(<Quiz {...Data} />);
     fireEvent.click(getByTestId("welcomebutton"));
     fireEvent.click(getByTestId("Question1-yes"));
     fireEvent.click(getByTestId("Question2-yes"));

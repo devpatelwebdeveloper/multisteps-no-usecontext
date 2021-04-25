@@ -6,7 +6,13 @@ export default function App() {
   return (
     <div className="App">
       <h1>MultiSteps Helper Function</h1>
-      <Quiz />
+      <Quiz
+        easyStartUrl="https://quickbooks.intuit.com/gutenberg/ca/pricing-easystart/"
+        plusUrl="https://quickbooks.intuit.com/gutenberg/ca/pricing-plus/"
+        essentialsUrl="https://quickbooks.intuit.com/gutenberg/ca/pricing-essentials/"
+        selfemployedUrl="https://quickbooks.intuit.com/gutenberg/ca/pricing-self-employed/"
+      />
+      <p>test</p>
     </div>
   );
 }

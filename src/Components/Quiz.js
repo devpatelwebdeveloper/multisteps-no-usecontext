@@ -5,7 +5,7 @@ import DisplayAnswer from "./CompletedScreen";
 import setInputValue from "./utils/SetInputValue";
 import useVisualMode from "./utils/UseVisualMode";
 
-function Quiz() {
+function Quiz({ easyStartUrl, plusUrl, essentialsUrl, selfemployedUrl }) {
   const [state, setState] = useState({
     question1: "",
     question2: "",
@@ -18,6 +18,7 @@ function Quiz() {
   });
   const { mode, transition } = useVisualMode(0);
   const [recommendation, setRecommendation] = useState("easystart");
+  const [mainurl, setMainurl] = useState(easyStartUrl);
 
   //Questions Start
   const Ques = [
@@ -175,12 +176,15 @@ function Quiz() {
   //Check the answer and add recomendation
   const showAnswer = () => {
     if (state.question7 === "yes") {
-      setRecommendation("plus");
+      // setRecommendation("plus");
+      setMainurl(plusUrl);
     } else {
       if (state.question5 === "yes" || state.question6 === "yes") {
-        setRecommendation("essentials");
+        // setRecommendation("essentials");
+        setMainurl(essentialsUrl);
       } else {
         setRecommendation("easystart");
+        setMainurl(easyStartUrl);
       }
     }
     if (
@@ -193,6 +197,7 @@ function Quiz() {
       state.question7 === "no"
     ) {
       setRecommendation("selfemployed");
+      setMainurl(selfemployedUrl);
     }
   };
 
@@ -237,28 +242,30 @@ function Quiz() {
     }
     //After Completion Show this
     else if (i === Ques.length + 1) {
-      return (
-        <>
-          <DisplayAnswer recommendation={recommendation} />
-          <button
-            onClick={() => {
-              transition(mode - Ques.length);
-              setState({
-                question1: "",
-                question2: "",
-                question3: "",
-                question4: "",
-                question5: "",
-                question6: "",
-                question7: "",
-                inputAdded: false
-              });
-            }}
-          >
-            Start Again
-          </button>
-        </>
-      );
+      window.location.href = mainurl;
+      return null;
+      //   return (
+      //     <>
+      //       <DisplayAnswer recommendation={recommendation} />
+      //       <button
+      //         onClick={() => {
+      //           transition(mode - Ques.length);
+      //           setState({
+      //             question1: "",
+      //             question2: "",
+      //             question3: "",
+      //             question4: "",
+      //             question5: "",
+      //             question6: "",
+      //             question7: "",
+      //             inputAdded: false
+      //           });
+      //         }}
+      //       >
+      //         Start Again
+      //       </button>
+      //     </>
+      //   );
     }
     //Quiz Steps
     return (
