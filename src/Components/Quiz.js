@@ -212,7 +212,6 @@ function Quiz({ easyStartUrl, plusUrl, essentialsUrl, selfemployedUrl }) {
 
       if (mode === Ques.length) {
         showAnswer();
-        console.log("STATE...", state);
       }
     } else {
       // if they haven't, just set inputAdded to false - this is just to reset state
@@ -243,6 +242,7 @@ function Quiz({ easyStartUrl, plusUrl, essentialsUrl, selfemployedUrl }) {
     //After Completion Show this
     else if (i === Ques.length + 1) {
       window.location.href = mainurl;
+      // window.location.assign(mainurl);
       return null;
       //   return (
       //     <>

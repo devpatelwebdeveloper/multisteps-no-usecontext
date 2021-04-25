@@ -104,7 +104,7 @@ function Quiz() {
       }));
 
       if (mode === 8) {
-        console.log("STATE...", state);
+        // console.log("STATE...", state);
       }
     } else {
       // if they haven't, just set inputAdded to false - this is just to reset state

@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { render, cleanup, fireEvent } from "@testing-library/react";
 // import { renderHook, act } from "@testing-library/react-hooks";
+import { logRoles } from "@testing-library/jest-dom";
 import "@testing-library/jest-dom/extend-expect";
 import Quiz from "./Quiz";
 
@@ -17,6 +18,7 @@ const Data = {
 
 describe("Quiz", () => {
   test("renders correctly", () => {
+    jest.useFakeTimers();
     const { getByTestId } = render(<Quiz {...Data} />);
     fireEvent.click(getByTestId("welcomebutton"));
     fireEvent.click(getByTestId("Question1-yes"));
@@ -25,6 +27,9 @@ describe("Quiz", () => {
     fireEvent.click(getByTestId("Question4-yes"));
     fireEvent.click(getByTestId("Question5-yes"));
     fireEvent.click(getByTestId("Question6-yes"));
+    console.log(getByTestId("quiz-question-Question7"));
     fireEvent.click(getByTestId("Question7-yes"));
+    expect(window.location.href).toBe("https://ld9by.csb.app/");
+    // expect(window.location.href).toBe("https://ld9by.csb.app/");
   });
 });
