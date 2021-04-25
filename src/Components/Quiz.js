@@ -241,8 +241,8 @@ function Quiz({ easyStartUrl, plusUrl, essentialsUrl, selfemployedUrl }) {
     }
     //After Completion Show this
     else if (i === Ques.length + 1) {
-      // window.location.href = mainurl;
-      window.location.assign(mainurl);
+      window.location.href = mainurl;
+      // window.location.assign(mainurl);
       return null;
       //   return (
       //     <>
