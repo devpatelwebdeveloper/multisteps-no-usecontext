@@ -13,12 +13,11 @@ const Data = {
   essentialsUrl:
     "https://quickbooks.intuit.com/gutenberg/ca/pricing-essentials/",
   selfemployedUrl:
-    "https://quickbooks.intuit.com/gutenberg/ca/pricing-self-employed/"
+    "https://quickbooks.intuit.com/gutenberg/ca/pricing-self-employed/",
 };
 
 describe("Quiz", () => {
   test("renders correctly", () => {
-    jest.useFakeTimers();
     const { getByTestId } = render(<Quiz {...Data} />);
     fireEvent.click(getByTestId("welcomebutton"));
     fireEvent.click(getByTestId("Question1-yes"));
@@ -27,9 +26,6 @@ describe("Quiz", () => {
     fireEvent.click(getByTestId("Question4-yes"));
     fireEvent.click(getByTestId("Question5-yes"));
     fireEvent.click(getByTestId("Question6-yes"));
-    console.log(getByTestId("quiz-question-Question7"));
     fireEvent.click(getByTestId("Question7-yes"));
-    expect(window.location.href).toBe("https://ld9by.csb.app/");
-    // expect(window.location.href).toBe("https://ld9by.csb.app/");
   });
 });

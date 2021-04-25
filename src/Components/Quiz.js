@@ -14,7 +14,7 @@ function Quiz({ easyStartUrl, plusUrl, essentialsUrl, selfemployedUrl }) {
     question5: "",
     question6: "",
     question7: "",
-    inputAdded: false
+    inputAdded: false,
   });
   const { mode, transition } = useVisualMode(0);
   const [recommendation, setRecommendation] = useState("easystart");
@@ -29,17 +29,17 @@ function Quiz({ easyStartUrl, plusUrl, essentialsUrl, selfemployedUrl }) {
       options: [
         {
           value: "yes",
-          title: "YES"
+          title: "YES",
         },
         {
           value: "no",
-          title: "NO"
+          title: "NO",
         },
         {
           value: "na",
-          title: "N/A"
-        }
-      ]
+          title: "N/A",
+        },
+      ],
     },
     {
       stateSet: "question2",
@@ -48,17 +48,17 @@ function Quiz({ easyStartUrl, plusUrl, essentialsUrl, selfemployedUrl }) {
       options: [
         {
           value: "yes",
-          title: "YES"
+          title: "YES",
         },
         {
           value: "no",
-          title: "NO"
+          title: "NO",
         },
         {
           value: "na",
-          title: "N/A"
-        }
-      ]
+          title: "N/A",
+        },
+      ],
     },
     {
       stateSet: "question3",
@@ -67,17 +67,17 @@ function Quiz({ easyStartUrl, plusUrl, essentialsUrl, selfemployedUrl }) {
       options: [
         {
           value: "yes",
-          title: "YES"
+          title: "YES",
         },
         {
           value: "no",
-          title: "NO"
+          title: "NO",
         },
         {
           value: "na",
-          title: "N/A"
-        }
-      ]
+          title: "N/A",
+        },
+      ],
     },
     {
       stateSet: "question4",
@@ -86,17 +86,17 @@ function Quiz({ easyStartUrl, plusUrl, essentialsUrl, selfemployedUrl }) {
       options: [
         {
           value: "yes",
-          title: "YES"
+          title: "YES",
         },
         {
           value: "no",
-          title: "NO"
+          title: "NO",
         },
         {
           value: "na",
-          title: "N/A"
-        }
-      ]
+          title: "N/A",
+        },
+      ],
     },
     {
       stateSet: "question5",
@@ -105,17 +105,17 @@ function Quiz({ easyStartUrl, plusUrl, essentialsUrl, selfemployedUrl }) {
       options: [
         {
           value: "yes",
-          title: "YES"
+          title: "YES",
         },
         {
           value: "no",
-          title: "NO"
+          title: "NO",
         },
         {
           value: "na",
-          title: "N/A"
-        }
-      ]
+          title: "N/A",
+        },
+      ],
     },
     {
       stateSet: "question6",
@@ -124,17 +124,17 @@ function Quiz({ easyStartUrl, plusUrl, essentialsUrl, selfemployedUrl }) {
       options: [
         {
           value: "yes",
-          title: "YES"
+          title: "YES",
         },
         {
           value: "no",
-          title: "NO"
+          title: "NO",
         },
         {
           value: "na",
-          title: "N/A"
-        }
-      ]
+          title: "N/A",
+        },
+      ],
     },
     {
       stateSet: "question7",
@@ -143,18 +143,18 @@ function Quiz({ easyStartUrl, plusUrl, essentialsUrl, selfemployedUrl }) {
       options: [
         {
           value: "yes",
-          title: "YES"
+          title: "YES",
         },
         {
           value: "no",
-          title: "NO"
+          title: "NO",
         },
         {
           value: "na",
-          title: "N/A"
-        }
-      ]
-    }
+          title: "N/A",
+        },
+      ],
+    },
   ];
 
   //Question Ends
@@ -164,7 +164,7 @@ function Quiz({ easyStartUrl, plusUrl, essentialsUrl, selfemployedUrl }) {
     event.preventDefault();
     setState((prev) => ({
       ...prev,
-      inputAdded: true
+      inputAdded: true,
     }));
   };
   // Previous Page
@@ -207,7 +207,7 @@ function Quiz({ easyStartUrl, plusUrl, essentialsUrl, selfemployedUrl }) {
       transition(mode + 1);
       setState((prev) => ({
         ...prev,
-        inputAdded: false
+        inputAdded: false,
       }));
 
       if (mode === Ques.length) {
@@ -217,7 +217,7 @@ function Quiz({ easyStartUrl, plusUrl, essentialsUrl, selfemployedUrl }) {
       // if they haven't, just set inputAdded to false - this is just to reset state
       setState((prev) => ({
         ...prev,
-        inputAdded: false
+        inputAdded: false,
       }));
     }
   }, [state.inputAdded]);
@@ -241,8 +241,8 @@ function Quiz({ easyStartUrl, plusUrl, essentialsUrl, selfemployedUrl }) {
     }
     //After Completion Show this
     else if (i === Ques.length + 1) {
-      window.location.href = mainurl;
-      // window.location.assign(mainurl);
+      // window.location.href = mainurl;
+      window.location.assign(mainurl);
       return null;
       //   return (
       //     <>
