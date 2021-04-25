@@ -17,7 +17,7 @@ const Data = {
 };
 
 describe("Quiz", () => {
-  test("renders correctly", () => {
+  test("renders essentials", () => {
     const { getByTestId } = render(<Quiz {...Data} />);
     fireEvent.click(getByTestId("welcomebutton"));
     fireEvent.click(getByTestId("Question1-yes"));
@@ -27,5 +27,38 @@ describe("Quiz", () => {
     fireEvent.click(getByTestId("Question5-yes"));
     fireEvent.click(getByTestId("Question6-yes"));
     fireEvent.click(getByTestId("Question7-yes"));
+  });
+  test("renders essentials A", () => {
+    const { getByTestId } = render(<Quiz {...Data} />);
+    fireEvent.click(getByTestId("welcomebutton"));
+    fireEvent.click(getByTestId("Question1-yes"));
+    fireEvent.click(getByTestId("Question2-yes"));
+    fireEvent.click(getByTestId("Question3-yes"));
+    fireEvent.click(getByTestId("Question4-yes"));
+    fireEvent.click(getByTestId("Question5-yes"));
+    fireEvent.click(getByTestId("Question6-yes"));
+    fireEvent.click(getByTestId("Question7-no"));
+  });
+  test("renders essentials A", () => {
+    const { getByTestId } = render(<Quiz {...Data} />);
+    fireEvent.click(getByTestId("welcomebutton"));
+    fireEvent.click(getByTestId("Question1-yes"));
+    fireEvent.click(getByTestId("Question2-yes"));
+    fireEvent.click(getByTestId("Question3-yes"));
+    fireEvent.click(getByTestId("Question4-yes"));
+    fireEvent.click(getByTestId("Question5-no"));
+    fireEvent.click(getByTestId("Question6-yes"));
+    fireEvent.click(getByTestId("Question7-no"));
+  });
+  test("renders selfemployed", () => {
+    const { getByTestId } = render(<Quiz {...Data} />);
+    fireEvent.click(getByTestId("welcomebutton"));
+    fireEvent.click(getByTestId("Question1-no"));
+    fireEvent.click(getByTestId("Question2-no"));
+    fireEvent.click(getByTestId("Question3-no"));
+    fireEvent.click(getByTestId("Question4-no"));
+    fireEvent.click(getByTestId("Question5-no"));
+    fireEvent.click(getByTestId("Question6-no"));
+    fireEvent.click(getByTestId("Question7-no"));
   });
 });
