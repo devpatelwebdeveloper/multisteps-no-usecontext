@@ -249,6 +249,26 @@ function Quiz({ easyStartUrl, plusUrl, essentialsUrl, selfemployedUrl }) {
           <DisplayAnswer recommendation={recommendation} />
           <button
             onClick={() => {
+              //Hide Pricing Cards
+              const pricingcards = document.getElementById("pricingCards");
+              pricingcards.classList.toggle("pricingCardShow");
+              pricingcards.classList.toggle("pricingCardHide");
+              const elems = document.querySelectorAll(
+                ".pricingCardRecommended"
+              );
+
+              [].forEach.call(elems, function (el) {
+                el.classList.remove("pricingCardRecommended");
+              });
+              //and remove Most Recommended
+              const recommendedFlag = document.querySelectorAll(
+                ".showRecommended"
+              );
+
+              [].forEach.call(recommendedFlag, function (el) {
+                el.classList.remove("showRecommended");
+              });
+              // cardToHighlight.classList.remove("pricingCardRecommended");
               transition(mode - Ques.length);
               setState({
                 question1: "",
