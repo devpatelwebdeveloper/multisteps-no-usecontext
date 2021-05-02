@@ -1,6 +1,14 @@
+.options {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  max-width: 800px;
+  margin: 0 auto;
+}
 .option {
   border: 1px solid black;
   margin: 20px;
+  padding: 20px;
 }
 .active {
   border: 1px solid red;

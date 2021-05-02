@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from "react";
+import ReactDOM from "react-dom";
 import QuizQuestion from "./Questions/QuizQuestion";
 import Welcome from "./WelcomeScreen";
 import DisplayAnswer from "./CompletedScreen";
 import setInputValue from "./utils/SetInputValue";
 import useVisualMode from "./utils/UseVisualMode";
+
+const quizElement = document.getElementById("qbo-prod-quiz");
 
 function Quiz({ easyStartUrl, plusUrl, essentialsUrl, selfemployedUrl }) {
   const [state, setState] = useState({
@@ -225,7 +228,7 @@ function Quiz({ easyStartUrl, plusUrl, essentialsUrl, selfemployedUrl }) {
   for (let i = mode; i <= Ques.length + 1; i++) {
     //Start
     if (i === 0) {
-      return (
+      return ReactDOM.createPortal(
         <>
           <Welcome />
           <button
@@ -236,7 +239,8 @@ function Quiz({ easyStartUrl, plusUrl, essentialsUrl, selfemployedUrl }) {
           >
             Start Quiz
           </button>
-        </>
+        </>,
+        quizElement
       );
     }
     //After Completion Show this
@@ -244,7 +248,7 @@ function Quiz({ easyStartUrl, plusUrl, essentialsUrl, selfemployedUrl }) {
       // window.location.href = mainurl;
       // window.location.assign(mainurl);
       // return null;
-      return (
+      return ReactDOM.createPortal(
         <>
           <DisplayAnswer recommendation={recommendation} />
           <button
@@ -256,17 +260,16 @@ function Quiz({ easyStartUrl, plusUrl, essentialsUrl, selfemployedUrl }) {
               const elems = document.querySelectorAll(
                 ".pricingCardRecommended"
               );
-
               [].forEach.call(elems, function (el) {
-                el.classList.remove("pricingCardRecommended");
+                el.classList.toggle("pricingCardRecommended");
               });
               //and remove Most Recommended
               const recommendedFlag = document.querySelectorAll(
                 ".showRecommended"
               );
-
               [].forEach.call(recommendedFlag, function (el) {
-                el.classList.remove("showRecommended");
+                el.classList.toggle("showRecommended");
+                el.classList.toggle("hideRecomemended");
               });
               // cardToHighlight.classList.remove("pricingCardRecommended");
               transition(mode - Ques.length);
@@ -284,11 +287,12 @@ function Quiz({ easyStartUrl, plusUrl, essentialsUrl, selfemployedUrl }) {
           >
             Start Again
           </button>
-        </>
+        </>,
+        quizElement
       );
     }
     //Quiz Steps
-    return (
+    return ReactDOM.createPortal(
       <>
         {mode === i && (
           <QuizQuestion
@@ -300,7 +304,8 @@ function Quiz({ easyStartUrl, plusUrl, essentialsUrl, selfemployedUrl }) {
             nextPage={nextPage}
           />
         )}
-      </>
+      </>,
+      quizElement
     );
   }
 }
